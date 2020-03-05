@@ -71,19 +71,6 @@ RUN cd /usr/src \
 	&& make \
 	&& make install
 
-# https://github.com/jcupitt/docker-builds/blob/a326e6c94295557d31629dd12d09d0990324f1fd/libvips-openjpeg-alpine/Dockerfile#L48
-# Using version 6.9.10-71 to match with Heroku
-ARG MAGICK_VERSION=6.9.10-71
-ARG MAGICK_URL=https://github.com/ImageMagick/ImageMagick6/archive
-
-RUN cd /usr/src \
-	&& wget ${MAGICK_URL}/${MAGICK_VERSION}.tar.gz \
-	&& tar xf ${MAGICK_VERSION}.tar.gz \
-	&& cd ImageMagick6-${MAGICK_VERSION} \
-	&& ./configure \
-	&& make V=0 \
-	&& make install
-
 ARG VIPS_URL=https://github.com/libvips/libvips/releases/download
 
 RUN cd /usr/src \
